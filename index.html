@@ -1,20 +1,25 @@
 <html>
     <head>
         <title>Angular assignment </title>
+        <link href="css/bootstrap.css" rel="stylesheet">
+        <script src="js/bootstrap.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <script src="js/angular.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.5/angular-route.min.js"></script>
+        
+        
+
     </head>
     
-    <body>
-        <p> This is paragraph 1 </p>
-        <p> This is 2nd para </p>
-        <p> This is 3rd para </p>
-    
-    
-    
-    </body>    
+    <body ng-app="myApp">
+        
 
-
-
-
-
-
+        <!--         
+        <a href="#!/form1">Form 1</a><br/>
+        <a href="#!/form2">Form 2</a><br/>
+        <a href="#!/form3">Form 3</a><br/> -->
+        
+        <div ng-view></div>
+        <script src='scripts/routeandcontroller.js' type="text/javascript"></script>
+    </body>   
 </html>
