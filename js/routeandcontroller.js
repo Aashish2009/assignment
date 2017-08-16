@@ -29,11 +29,71 @@ var module = angular.module("myApp", ['ngRoute']);
         $scope.details.phoneno = "";
 
         $scope.clicked=function(path){
-            alert($scope.details.phoneno);
-            //alert(JSON.stringify(details));--- not working
-            $location.path("/form3" );
+            if($scope.details.phoneno==""){
+                alert("Invalid input.");    
+            }
+            else{
+                alert(JSON.stringify($scope.details));
+                $location.path("/form2" );
+            }   
+        };
+        
+    });
+
+    module.controller('myCtrl2', function($scope,$location) {
+        $scope.data={};
+        $scope.data.fromdate="";
+        $scope.data.todate="";
+        $scope.data.fromtime="";
+        $scope.data.totime="";
+
+        //Initialize models and datepickers and timepickers
+        $("#myBtn").click(function(){
+            $("#myModal").modal();
+        });
+        $('#example1').datepicker({
+            format: "dd/mm/yyyy"
+        });
+        $('#example2').datepicker({
+            format: "dd/mm/yyyy"
+        });
+        $("#myBtn2").click(function(){
+            $("#myModal2").modal();
+        });
+        $('#timepicker1').timepicker();
+        $('#timepicker2').timepicker();
+
+        $scope.submitclicked1=function(){
+            $scope.data.fromdate = $("#example1").val();
+            $scope.data.todate = $("#example2").val();
+            if ($scope.data.fromdate >  $scope.data.todate) {
+                alert("From date should be smaller than to date");
+                $scope.data.fromdate="";
+                $scope.data.todate="";
+            }
+            else{
+                $("#myModal").modal('toggle');
+            }
+        }
+
+        $scope.submitclicked2=function(){
+            $scope.data.fromtime = $("#timepicker1").val();
+            $scope.data.totime = $("#timepicker2").val();
+            $("#myModal2").modal('toggle');    
+        }
+
+        $scope.clicked2=function(){
+            if($scope.data.fromdate=="" || $scope.data.todate=="" || $scope.data.fromtime=="" || $scope.data.totime=="" ){
+                alert("one or more missing input");
+            }
+            else{
+                alert(JSON.stringify($scope.data));
+                $location.path("/form3" );
+            }
               
         };
+
+
         
     });
 
