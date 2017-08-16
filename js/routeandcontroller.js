@@ -1,5 +1,5 @@
+// var module = angular.module("myApp", ['ngRoute','uiGmapgoogle-maps']);
 var module = angular.module("myApp", ['ngRoute']);
-
     module.config(['$routeProvider', '$locationProvider',
         function($routeProvider, $locationProvider) {
             $routeProvider.
@@ -13,6 +13,7 @@ var module = angular.module("myApp", ['ngRoute']);
                 }).
                 when('/form3', {
                     templateUrl: 'test/page3.html',
+                    controller : "myCtrl3"
                     
                 }).
                 otherwise({
@@ -21,6 +22,8 @@ var module = angular.module("myApp", ['ngRoute']);
                  //$locationProvider.html5Mode(true); //Remove the '#' from URL
         }]);
 
+    
+
     module.controller('myCtrl1',function($scope,$location) {
         $scope.details={};
         $scope.details.phoneno = "";
@@ -28,13 +31,13 @@ var module = angular.module("myApp", ['ngRoute']);
         $scope.clicked=function(path){
             alert($scope.details.phoneno);
             //alert(JSON.stringify(details));--- not working
-            $location.path("/form2" );
+            $location.path("/form3" );
               
         };
         
     });
 
-    module.controller('myCtrl2', function($scope,$location) {
-    
+    module.controller('myCtrl3', function($scope,$location) {
+        $scope.map = { center: { latitude: 45, longitude: -73 }, zoom: 8 };
         
     });
